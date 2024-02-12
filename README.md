@@ -4,7 +4,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Github
 
 ## 💻 Projeto
-Projeto ETL desenvolvido em Python para migrar a frequencia de 20 anos (em excel) dos servidores do governo de RO.
+Projeto ETL desenvolvido em Python para migrar os dados em excel da frequencia de 20 anos dos servidores do governo do estado de Rôndonia.
 
 ## 📝 Licença
 Esse projeto está sob a licença MIT.
