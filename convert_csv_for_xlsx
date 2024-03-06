@@ -1,0 +1,32 @@
+import os
+import pandas as pd
+
+# Caminho da pasta principal
+pasta_principal = r'C:\Users\UNIR\OneDrive\Área de Trabalho\Avaliacoes'
+
+# Função para converter arquivos CSV para XLSX
+def converter_csv_para_xlsx(pasta):
+    for root, dirs, files in os.walk(pasta):
+        for arquivo in files:
+            if arquivo.endswith('.csv'):
+                print(f"Convertendo {arquivo} para XLSX...")
+                caminho_csv = os.path.join(root, arquivo)
+                # Verificar se o arquivo não está vazio
+                with open(caminho_csv, 'r', encoding='utf-8') as f:
+                    primeira_linha = f.readline()
+                    if primeira_linha.strip() != '':
+                        # Ler o arquivo CSV
+                        dados = pd.read_csv(caminho_csv, encoding='utf-8')
+                        # Obter o caminho e o nome do arquivo XLSX
+                        nome_arquivo_xlsx = os.path.splitext(arquivo)[0] + '.xlsx'
+                        caminho_xlsx = os.path.join(root, nome_arquivo_xlsx)
+                        # Salvar os dados em XLSX
+                        dados.to_excel(caminho_xlsx, index=False)
+                        print(f"{arquivo} convertido para XLSX.")
+                    else:
+                        print(f"O arquivo {arquivo} está vazio, pulando para o próximo arquivo.")
+
+    print("Conversão concluída.")
+
+# Chamada da função para converter os arquivos CSV para XLSX na pasta principal
+converter_csv_para_xlsx(pasta_principal)
